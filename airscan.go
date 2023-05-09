@@ -414,6 +414,7 @@ func NewClientForService(service *dnssd.BrowseEntry) *Client {
 		// DNSSD-provided IP address:
 		hostports = append(hostports, net.JoinHostPort(ip.String(), port))
 	}
+	log.Printf("initializing new client with hostports %v", hostports)
 	transport := http.DefaultTransport.(*http.Transport).Clone()
 	fbDialer := fallbackDialer{
 		hostports: hostports,
