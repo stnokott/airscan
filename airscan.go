@@ -43,7 +43,7 @@ type ScannerStatus struct {
 // ScanSettings instruct the device how to scan.
 //
 // It is recommended to use the
-// https://pkg.go.dev/github.com/stapelberg/airscan/preset package to start with
+// https://pkg.go.dev/github.com/stnokott/airscan/preset package to start with
 // a known-good configuration.
 type ScanSettings struct {
 	XMLName        xml.Name    `xml:"scan:ScanSettings"`
@@ -121,7 +121,7 @@ func (c *Client) do(req *http.Request, okayStatuses ...int) (resp *http.Response
 			}
 		}()
 	}
-	req.Header.Set("User-Agent", "https://github.com/stapelberg/airscan")
+	req.Header.Set("User-Agent", "https://github.com/stnokott/airscan")
 	resp, err = c.HTTPClient.Do(req)
 	if err != nil {
 		return nil, err

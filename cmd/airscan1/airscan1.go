@@ -33,8 +33,8 @@ import (
 	"github.com/brutella/dnssd"
 	"github.com/davecgh/go-spew/spew"
 	"github.com/google/renameio/v2"
-	"github.com/stapelberg/airscan"
-	"github.com/stapelberg/airscan/preset"
+	"github.com/stnokott/airscan"
+	"github.com/stnokott/airscan/preset"
 )
 
 func humanDeviceName(srv dnssd.BrowseEntry) string {

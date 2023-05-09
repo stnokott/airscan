@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/brutella/dnssd"
-	"github.com/stapelberg/airscan"
+	"github.com/stnokott/airscan"
 )
 
 func TestDialer(t *testing.T) {

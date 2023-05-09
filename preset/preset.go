@@ -20,7 +20,7 @@
 // way of reaching a high level of compatibility with devices in the wild.
 package preset
 
-import "github.com/stapelberg/airscan"
+import "github.com/stnokott/airscan"
 
 // GrayscaleA4ADF scans an A4 document at 300 dpi from the Automated Document
 // Feeder (ADF) in grayscale. Each call will return a struct that is safe to

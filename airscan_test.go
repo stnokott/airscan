@@ -29,8 +29,8 @@ import (
 
 	"github.com/brutella/dnssd"
 	"github.com/google/go-cmp/cmp"
-	"github.com/stapelberg/airscan"
-	"github.com/stapelberg/airscan/preset"
+	"github.com/stnokott/airscan"
+	"github.com/stnokott/airscan/preset"
 )
 
 var binaryScanDataStandIn = []byte{0x22, 0x33, 0x44}
@@ -187,7 +187,7 @@ var discoveredService *dnssd.BrowseEntry // descriptive name for ExampleClient_S
 
 func ExampleClient_Scan() {
 	// For a full example using DNSSD service discovery, see:
-	// https://github.com/stapelberg/airscan/blob/master/cmd/airscan1/airscan1.go
+	// https://github.com/stnokott/airscan/blob/master/cmd/airscan1/airscan1.go
 	cl := airscan.NewClientForService(discoveredService)
 
 	// Set up scan job:

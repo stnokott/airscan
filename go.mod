@@ -1,4 +1,4 @@
-module github.com/stapelberg/airscan
+module github.com/stnokott/airscan
 
 go 1.18
 
