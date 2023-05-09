@@ -15,6 +15,7 @@
 package airscan
 
 import (
+	"crypto/tls"
 	"encoding/xml"
 	"fmt"
 	"io"
@@ -378,7 +379,7 @@ func (c *Client) Scan(settings *ScanSettings) (*ScanState, error) {
 }
 
 func (c *Client) getEndpoint(s string) string {
-	return "http://" + c.host + s
+	return "https://" + c.host + s
 }
 
 // NewClient returns a ready-to-use Client. It is safe to update its struct
@@ -387,10 +388,12 @@ func (c *Client) getEndpoint(s string) string {
 // When using DNSSD service discovery to locate the scanner (the most common
 // choice), prefer NewClientForService instead.
 func NewClient(host string) *Client {
+	transport := http.DefaultTransport.(*http.Transport).Clone()
+	transport.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 	return &Client{
 		host: host,
 		HTTPClient: &http.Client{
-			Transport: http.DefaultTransport.(*http.Transport).Clone(),
+			Transport: transport,
 		},
 	}
 }
@@ -416,6 +419,7 @@ func NewClientForService(service *dnssd.BrowseEntry) *Client {
 	}
 	log.Printf("initializing new client with hostports %v", hostports)
 	transport := http.DefaultTransport.(*http.Transport).Clone()
+	transport.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 	fbDialer := fallbackDialer{
 		hostports: hostports,
 		underlying: &net.Dialer{
