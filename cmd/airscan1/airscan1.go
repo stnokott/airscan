@@ -211,6 +211,7 @@ type airscanner struct {
 
 func (sc *airscanner) scan1() error {
 	cl := airscan.NewClientForService(sc.service)
+	cl.SetDebug(sc.debug)
 	transport := cl.HTTPClient.(*http.Client).Transport.(*http.Transport)
 	transport.TLSClientConfig = &tls.Config{InsecureSkipVerify: sc.skipCertVerify}
 
